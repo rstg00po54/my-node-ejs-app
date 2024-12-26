@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "ejs": "^3.1.10",
+    "express": "^4.21.2",
+    "hexo-server": "^3.0.0",
+    "marked": "^15.0.4",
+    "stylus": "^0.64.0"
+  }
+}

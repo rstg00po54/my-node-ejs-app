@@ -1,0 +1,67 @@
+/* 定义链接的颜色为 #7f8c8d */
+.sidebar-link
+  color #7f8c8d  /* $light 变量的值 */
+  
+  /* 如果 .sidebar-link 的类名包含 .current */
+  /* 当前链接样式 */
+  font-weight 600
+  color #3498db  /* $theme 变量的值 */
+  
+  /* 如果 .sidebar-link 的类名包含 .new */
+  /* 新链接样式 */
+  position relative
+
+  &.new::after
+    content 'NEW'  /* 内容为 "NEW" */
+    display inline-block  /* 将伪元素设置为内联块级元素 */
+    font-size 10px  /* 设置字体大小为 10px */
+    font-weight 600  /* 设置字体加粗 */
+    color #fff  /* 设置文字颜色为白色 */
+    background-color #3498db  /* 背景颜色为 $theme 变量的值 */
+    line-height 14px  /* 设置行高为 14px */
+    padding 0 4px  /* 设置左右内边距为 4px */
+    border-radius 3px  /* 设置圆角为 3px */
+    margin-left 5px  /* 设置左边距为 5px */
+    vertical-align middle  /* 使其垂直居中 */
+    position relative  /* 设置相对定位 */
+    top -1px  /* 向上偏移 1px */
+
+  /* 当鼠标悬停在 .sidebar-link 上时 */
+  &:hover
+    border-bottom 2px solid #3498db  /* 添加底部边框，颜色为 $theme 变量的值 */
+
+.father
+  width 500px
+  height 300px
+  background-color pink
+  position relative
+  top 200px
+  left 200px
+
+/* styles.css */
+body
+  font-family Arial, sans-serif
+  margin 20px
+
+#directory ul
+  list-style-type none
+  padding-left 20px
+
+#directory li
+  margin 5px 0
+
+.sub-list
+  display none
+  margin-top 5px
+
+a
+  text-decoration none
+  color #007BFF  /* 默认链接颜色 */
+  font-weight bold
+  cursor pointer
+
+a:hover
+  color #0056b3  /* 鼠标悬停时的颜色 */
+
+a.active
+  color #FF5733  /* 点击后变为红色 */

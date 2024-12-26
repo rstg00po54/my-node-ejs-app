@@ -1,0 +1,77 @@
+
+<% var isIndex = 1 %>
+<% console.log('Current page.path:0', isIndex); %>
+<%= isIndex %>
+<!-- views/index.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+	<link rel="stylesheet" href="page.css">
+
+
+
+
+	<script src="script.js"></script>
+
+
+
+	<%- css('output') %>
+
+
+
+  </head>
+  <!-- 174 194 211 -->
+  <body style="background-color: #202324;color: #AEC2D3;">
+
+
+    <!-- 引入 header.ejs -->
+    <%- include('partials/header') %>
+
+	
+
+	<h1 style="color:greenyellow;font-size: large;">Title2</h1>
+	<li>
+		<a href="/modern-cpp/zh-cn/00-preface/index.html" class="sidebar-link">序言</a>
+	</li>
+
+	<div id="directory">
+		<ul>
+		  <li><a href="javascript:void(0);" class="toggle">项目 1</a>
+			<ul class="sub-list">
+			  <li><a href="javascript:void(0);">子项 1.1</a></li>
+			  <li><a href="javascript:void(0);">子项 1.2</a></li>
+			</ul>
+		  </li>
+		  <li><a href="javascript:void(0);" class="toggle">项目 2</a>
+			<ul class="sub-list">
+			  <li><a href="javascript:void(0);">子项 2.1</a></li>
+			  <li><a href="javascript:void(0);">子项 2.2</a></li>
+			</ul>
+		  </li>
+		  <li><a href="javascript:void(0);" class="toggle">项目 3</a> 
+			<ul class="sub-list">
+			  <li><a href="javascript:void(0);">子项 3.1</a></li>
+			  <li><a href="javascript:void(0);">子项 3.2</a></li>
+			</ul>
+		  </li>
+		</ul>
+	  </div>
+
+
+
+    <!-- 页面内容 -->
+    <div class="content">
+      <%- content %> <!-- 这里会显示转换后的 HTML 内容 -->
+    </div>
+	<div class="father">
+		正文
+	</div>
+
+    <!-- 引入 footer.ejs -->
+    <%- include('partials/footer') %>
+
+  </body>
+</html>
