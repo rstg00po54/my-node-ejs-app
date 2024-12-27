@@ -6,11 +6,18 @@ const ejs = require('ejs');
 const app = express();
 const { marked } = require('marked');
 const stylus = require('stylus');
+
+const { copyFiles } = require('./copyFiles');  // 引入 copyFiles 函数
 // 设置 EJS 模板引擎
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 app.set('view cache', false);  // 禁用缓存
 
+
+const sourceDir = 'chat';  // 源文件夹路径
+const targetDir = 'public';  // 目标文件夹路径
+// 调用 copyFiles 函数
+copyFiles(sourceDir, targetDir);
 // 静态文件目录
 // app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'views')));
@@ -23,7 +30,7 @@ function convertMarkdownToHtml(filePath) {
 // 保存生成的 HTML 到文件
 function saveHtmlToFile(fileName, content) {
 
-	console.log(content)
+	// console.log(content)
   
 	// 保存到 'public' 目录下的静态 HTML 文件
 	fs.writeFile(path.join(__dirname, 'public', fileName), content, (err) => {
@@ -38,35 +45,46 @@ const inputPath = './views/page.styl';
 const outputPath = './views/output.css';
 
 // 定义处理读取文件后的回调函数
-function handleStylusCompilation(err, data) {
-	if (err) {
-	  console.error(`Error reading file: ${err}`);
-	  return;
-	}
-  
+function handleStylusCompilation(data) {
+	console.log("开始编译css")
 	// 编译 .styl 文件为 .css
-	stylus(data)
-	  .render((renderErr, css) => {
+	stylus(data).render((renderErr, css) => {
+		console.log("开始编译css done")
 		if (renderErr) {
 		  console.error(`Error rendering CSS: ${renderErr}`);
 		  return;
 		}
   
 		// 写入生成的 .css 文件
-		fs.writeFile(outputPath, css, (writeErr) => {
-		  if (writeErr) {
-			console.error(`Error writing CSS file: ${writeErr}`);
-		  } else {
+		try {
+			fs.writeFileSync(outputPath, css, 'utf8'); // 直接写入，不需要回调函数
 			console.log(`CSS compiled and saved to ${outputPath}`);
-		  }
-		});
-	  });
+		} catch (writeErr) {
+			console.error(`Error writing CSS file: ${writeErr}`);
+		}
+	});
+}
+// 同步处理
+async function compileStylusAsync(data) {
+	try {
+	  await handleStylusCompilation(data);
+	} catch (err) {
+	  console.error('编译出错:', err);
+	}
   }
   
 // 调用 fs.readFile 并传入处理函数
-fs.readFile(inputPath, 'utf8', handleStylusCompilation);
+// fs.readFile(inputPath, 'utf8', handleStylusCompilation);
 
 
+try {
+	const data = fs.readFileSync(inputPath, 'utf8');
+	// console.log('文件内容:', data);
+	console.error('读取文件成功');
+	compileStylusAsync(data);
+  } catch (err) {
+	console.error('读取文件失败:', err);
+  }
 
 // 确保路径正确
 const headerPath = path.join(__dirname, 'views', 'partials', 'header.ejs');
@@ -90,7 +108,7 @@ function generateHtml(content) {
 const mdHtml = convertMarkdownToHtml(path.join(__dirname, 'source', 'index.md'))
 // const indexHtml = generateHtml(mdHtml)
 console.log('-------------')
-console.log(mdHtml)
+// console.log(mdHtml)
 console.log('-------------')
 // console.log(indexHtml)
 console.log('-------------')
@@ -120,7 +138,7 @@ ejs.renderFile(path.join(__dirname, 'views', 'index.ejs'), templateData, {}, (er
   
 	saveHtmlToFile('index.html', finalOutput);  // 保存 HTML 到文件
 	// console.log('HTML file generated successfully at:', outputFilePath);
-	console.log(finalOutput);
+	// console.log(finalOutput);
   });
 
 // 路由：主页
