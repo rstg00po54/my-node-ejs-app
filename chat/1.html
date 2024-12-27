@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		 /* 类选择器 */
+		.father {
+			width: 50%;
+			height: 300px;
+			background-color: rgb(121, 106, 109);
+			/* 生成相对定位的元素，相对于其正常位置进行定位。因此，“left:20” 会向元素的 left 位置添加 20 像素。（子绝父相） */
+			position: relative;
+		}
+		 /* 类选择器 */
+		.son {
+			width: 100px;
+			height: 100px;
+			background-color: blue;
+			/* 固定定位，相对于浏览器可视窗口进行定位，脱离文档流。做广告的时候用的多，不会随着页面的滚动而滚动。 */
+			/* 生成固定定位的元素，相对于浏览器窗口进行定位。元素的位置通过 “left”, “top”, “right” 以及 “bottom” 属性进行规定。 */
+			position: fixed;
+			top: 50px;
+			left: 0px;
+		}
+
+		.f1{
+			position: absolute;
+			background-color: aqua;
+			top:20%
+		}
+		.flex-container {
+            display: flex;
+            flex-wrap: wrap; /* 允许项目换行 */
+            width: 300px;
+            height: 150px;
+            border: 1px solid #000;
+            padding: 10px;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+        }
+
+        .flex-item {
+            width: 50px;
+            height: 50px;
+            margin: 5px;
+            background-color: pink;
+            text-align: center;
+            line-height: 50px;
+            color: #333;
+        }
+
+        /* 使用不同的 flex-direction 值来改变项目的排列方向 */
+
+        .flex-container.row {
+            flex-direction: row;
+        }
+
+        .flex-container.row-reverse {
+            flex-direction: row-reverse;
+        }
+
+        .flex-container.column {
+            flex-direction: column;
+        }
+
+        .flex-container.column-reverse {
+            flex-direction: column-reverse;
+        }
+
+	</style>
+
+</head>
+<body>
+	<div class="father">
+		father
+		<div class="son">fixed</div>
+		<div>爹爹爹爹爹爹爹爹爹爹爹爹爹爹爹爹3</div>
+	</div>
+	<div class="f1">absolute</div>
+<hr>
+使用 row 方向的 flex 容器 <br>
+<diy style="display: flex;gap: 10px;">
+	<!-- 使用 row 方向的 flex 容器  -->
+	<div class="flex-container row">
+		<div class="flex-item">1</div>
+		<div class="flex-item">2</div>
+		<div class="flex-item">3</div>
+		<div class="flex-item">4</div>
+	</div>
+	
+	<!-- 使用 row-reverse 方向的 flex 容器 -->
+	<div class="flex-container row-reverse">
+		<div class="flex-item">1</div>
+		<div class="flex-item">2</div>
+		<div class="flex-item">3</div>
+		<div class="flex-item">4</div>
+	</div>
+	
+	<!-- 使用 column 方向的 flex 容器 -->
+	<div class="flex-container column">
+		<div class="flex-item">1</div>
+		<div class="flex-item">2</div>
+		<div class="flex-item">3</div>
+		<div class="flex-item">4</div>
+	</div>
+	
+	<!-- 使用 column-reverse 方向的 flex 容器 -->
+	<div class="flex-container column-reverse">
+		<div class="flex-item">1</div>
+		<div class="flex-item">2</div>
+		<div class="flex-item">3</div>
+		<div class="flex-item">4</div>
+	</div>
+</diy>
+<hr>
+
+</body>
+</html>

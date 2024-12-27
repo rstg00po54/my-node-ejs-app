@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Flexbox</title>
+	<style>
+		/* 标签选择器 */
+		body {
+			font-family: Arial, sans-serif;
+			margin: 0px;
+			background-color: #202324;
+			color: #AEC2D3;
+		}
+		/* id选择器 */
+		#directory ul {
+			list-style-type: none;
+			padding-left: 20px;
+		}
+
+		#directory li {
+			margin: 0px 0;
+			background-color: #123456;
+		}
+		/* 类选择器 */
+		.sub-list {
+			display: none;
+			/* margin-top: 5px; */
+		}
+
+		a {
+			text-decoration: none;
+			color: #007BFF;
+			/* 默认链接颜色 */
+			font-weight: bold;
+			cursor: pointer;
+		}
+
+
+
+		/* 设定整个页面的布局 */
+		#directory {
+			display: flex;
+			/* 设置为 Flexbox 布局 */
+			height: 100%;
+			flex-direction: row; 
+			/* 高度设置为视口高度 */
+		}
+
+		/* 左侧书签区域 */
+		.sidebar {
+			position: fixed;
+			width: 300px;
+			height: 200px;
+			/* 左侧栏的宽度 */
+			/* height: 300px; */
+			background-color: #6d7679;
+			color: #AEC2D3;
+			/* padding: 20px; */
+			box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+			overflow: auto;
+			margin-left: 0;
+			margin-top: 30px;
+		}
+
+		/* 右侧内容区域 */
+		.content {
+			display: flex;
+			background-color: #2e2e2e;
+			flex-grow: 1;
+			/* justify-content: center;  */
+			flex-direction:column;
+			
+			/* align-items: center;  */
+
+			/* width: calc(100vw - 340px - 12px - 12px); */
+			/* max-width: 600px; */
+			/* 内容区域占满剩余空间 */
+			padding-left: 100px;
+			padding-right: 100px;
+			padding-top: 20px;
+			height: 1000px;
+			margin-left: 300px;
+			/* margin-right: 50px; */
+		}
+
+		/* 书签链接的样式 */
+		.sidebar a {
+			display: block;
+			/* padding: 8px 0; */
+			color: #AEC2D3;
+			text-decoration: none;
+		}
+
+		/* 书签链接的 hover 样式 */
+
+		.sidebar a:hover {
+			color: #0056b3;
+			/* 鼠标悬停时的颜色 */
+		}
+
+		.sidebar a.active {
+			color: #FF5733;
+			/* 点击后变为红色 */
+		}
+
+		li::marker {
+			content: none;
+			/* 直接移除标记内容 */
+		}
+		#section1 {
+			background-color: #0056b3;
+			position: relative;
+			left: 0%;
+		}
+		#section2 {
+			background-color: #0056b3;
+			position: relative;
+			left: 0%;
+		}
+		#section3 {
+			background-color: #0056b3;
+			position: relative;
+			left: 0%;
+		}
+
+		.content h1 {
+  margin: 0;  /* 取消默认外边距 */
+  text-align: left;  /* 确保h2标签内容左对齐 */
+}
+
+.content {
+        padding: 30px;
+      }
+      .child:hover {
+        cursor: pointer;
+        color: aqua;
+      }
+	</style>
+
+</head>
+
+<body>
+
+	<div id="directory">
+		<div class="sidebar">
+			<h2>书签</h2>
+			<ul>
+				<li>
+					<a href="#section1" class="item0" id="1">项目 1</a>
+					<ul class="sub-list">
+						<li><a href="#" class="sub-text" id="1.1">子项 1.1</a></li>
+						<li><a href="#" class="sub-text" id="1.2">子项 1.2</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="#section2" class="item0" id="2">项目 2</a>
+					<ul class="sub-list">
+						<li><a href="#" class="sub-text" id="2.1">子项 2.1</a></li>
+						<li><a href="#" class="sub-text" id="2.2">子项 2.2</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="#section3" class="item0" id="3">项目 3</a>
+					<ul class="sub-list">
+						<li><a href="#" class="sub-text" id="3.1">子项 3.1</a></li>
+						<li><a href="#" class="sub-text" id="3.2">子项 3.2</a></li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+	
+
+		<!-- 内容区域 -->
+		<div class="content">
+			<h1 id="section1">第一部分</h1>
+			<p>
+				话说天下大势，分久必合，合久必分。周末七国分争，并入于秦。及秦灭之后，楚、汉分争，又并入于汉。汉朝自高祖斩白蛇而起义，一统天下，后来光武中兴，传至献帝，遂分为三国。推其致乱之由，殆始于桓、灵二帝。桓帝禁锢善类，崇信宦官。及桓帝崩，灵帝即位，大将军窦武、太傅陈蕃共相辅佐。时有宦官曹节等弄权，窦武、陈蕃谋诛之，机事不密，反为所害，中涓自此愈横。
+			</p>
+
+
+
+			<h1 id="section2">第二部分</h1><br>
+			<p>这里是第二部分的内容。</p>
+			<h1 id="section3">第三部分</h1>
+			<p>这里是第三部分的内容。</p>
+			<h1 id="section4">第四部分</h1>
+			<p>这里是第四部分的内容。</p>
+		</div>
+
+	</div>
+
+
+</body>
+
+</html>
+<script>
+	document.querySelectorAll('.item0').forEach(link => {
+		console.log("2-------link: " + link.className + ":" + link.nodeName + ":" + link.id)
+
+		const childNodes = link.parentElement.childNodes;  // 获取所有子节点
+
+		console.log("link: " + link.parentElement.className + ":" + link.parentElement.nodeName)
+
+		childNodes.forEach(node => {
+			console.log('--------1-------')
+			console.log(node.className + ':' + node.nodeName);  // 打印每个子节点
+		});
+
+		link.addEventListener('click', function () {
+			const subList = this.parentElement.querySelector('.sub-list')
+			console.log("Lis1 class Name: " + subList.className)
+			console.log(subList.innerHTML)
+
+
+			if (subList.style.display === 'none' || subList.style.display === '') {
+				subList.style.display = 'block'; //让元素作为块级元素显示（即占据一整行）
+				// this.textContent = '-'; // 展开后变为减号
+			} else {
+				subList.style.display = 'none'; //隐藏元素，元素不占据页面空间。
+				// this.textContent = '+'; // 折叠后变为加号
+			}
+
+			// 切换 active 样式
+			// this.classList.toggle('active');
+		});
+	});
+	// 目录下所有的link
+	document.querySelectorAll('#directory a').forEach(link => {
+		link.addEventListener('click', function (event) {
+			// event.preventDefault(); // 防止链接跳转
+			removeActive()
+			if (!link.className.includes('item0'))
+				this.classList.toggle('active');
+			console.log("Lis2 click: id " + link.id + " class " + link.className)
+			// button.classList.add('active');
+			// button.classList.remove('active');
+		});
+	});
+	function removeActive() {
+		document.querySelectorAll('.sub-text').forEach(link => {
+
+			link.classList.remove('active');
+
+		})
+	}
+
+
+	// if (button.classList.contains('active')) {
+	//   console.log('Button is active');
+	// } else {
+	//   console.log('Button is not active');
+	// }
+
+	// 移除所有条目的active类
+	// items.forEach(i => i.classList.remove('active'));
+
+	// 给当前点击的条目添加active类
+	// item.classList.add('active');
+</script>

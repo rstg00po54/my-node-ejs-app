@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+
+	<style>
+		body {
+			background-color: #232340;
+		}
+		.father {
+			width: 300px;
+			height: 100px;
+			background-color: rgb(221, 28, 60);
+			position: relative;
+			top: 10px;
+			left: 10px;
+		}
+		.cont {
+			border: #414101 1px;
+			border-style: dashed;
+			background-color: #232350; 
+			display: flex; 
+			justify-content: center; 
+			align-items: center; 
+			height: 100px;
+			width: calc(100vw - 300px);;
+			margin-left: 300px;
+		}
+		.left1 {
+			background-color: #414101;
+			position: relative;
+			margin: 6px;
+		}
+		.right1 {
+			background-color: #383812;
+			position: relative;
+			margin: 6px;
+		}
+	</style>
+</head>
+
+<body>
+	<div class="sidebar">
+		<a href="#">标题1</a>
+	</div>
+	<h1>标题</h1>
+	<div class="father">正文1</div>
+
+
+	<div class="cont">
+		<div class="left1">要居中的内容</div>
+		<dev class="right1">llll</dev>
+	</div>
+
+</body>
+
+</html>

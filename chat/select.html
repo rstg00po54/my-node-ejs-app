@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		/* 一、基本选择器 */
+		/* 通配符选择器 */
+		* {
+			font-size: 20px;
+		}
+
+		/* 标签选择器 */
+		body {
+			background-color: #202324;
+			color: blanchedalmond;
+		}
+
+		div {
+			background-color: #204344;
+		}
+
+		/* .类选择器 */
+		.c1 {
+			font-size: 50px;
+			color: blanchedalmond;
+		}
+
+		#id1 {
+			font-size: 30px;
+			color: antiquewhite;
+		}
+
+		/* 二、复合选择器（2种） */
+		/* 交集选择器:同时满足，标签选择器永远在最前面，选择器之间紧挨着。 */
+		.c1#p1 {
+			color: chocolate;
+		}
+
+		/* 并集选择器:同时选择多组标签设置样式，选择器之间用”,“隔开。 */
+		#s1,
+		.c4,
+		#d3 {
+			font-size: 50px;
+			color: blanchedalmond;
+		}
+
+		/* 三、关系选择器（4种）*/
+		/* 父亲 > 儿子 儿子中个别选择（大于号） */
+		div>span {
+			font-size: 40px;
+			color: aqua;
+		}
+
+		/* 祖先 后代 后代全部选择 （空格） */
+		div span {
+			color: red;
+		}
+
+		/* 兄+弟 离哥最近的弟被选择（+） */
+		p+div {
+			color: gray;
+		}
+
+		/* 兄~弟 哥的所有弟都被选择 （~） */
+		div~span {
+			color: brown;
+		}
+
+		/* 四、属性选择器（5种） */
+		/* [属性] ：含有指定属性 */
+		[title] {
+			color: aqua;
+		}
+
+		/* [属性=属性值] ： 指定属性和属性值 */
+		[title=a] {
+			color: blue;
+		}
+
+		/* [属性^=属性值]： 指定属性且以该属性值开头的 */
+		[title^=a] {
+			color: aquamarine;
+		}
+
+		/* [属性$=属性值]：指定属性且以该属性值结尾的 */
+		[title$=c] {
+			color: blueviolet;
+		}
+
+		/* [属性*=属性值] ：指定属性且含有该属性值的 */
+		[title*=b] {
+			color: red;
+		}
+
+		/* 五、伪类选择器（11种） */
+		/* 1 元素选择伪类选择器（6种） */
+		/* first-child  last-child 前有空格代表从子类开始也就是关系（祖先 后代）选择器（后代都要选），无空格代表从所在级数开始。 */
+		/* 1.1.1有空格  :first-child 第一个子元素  eg: div :first-child 所有div的第一个子元素 */
+		div :first-child {
+			color: aquamarine;
+		}
+		/* 1.1.2 没有空格  :first-child 第一个子元素  eg: div :first-child div的第一个子元素  */
+		div:first-child {
+			color: brown;
+		}
+		/* 1.2.1 没有空格 :last-child 第一个元素的最后一个子元素 */
+		div:last-child {
+			color: brown;
+		}
+		/* 1.2.2  有空格 :last-child 所有元素的最后一个子元素 */
+		div :last-child {
+			color: brown;
+		}
+		/* 1.3  :nth-child(n) 选中第n个元素, n的范围0到正无穷 */
+		/*  n可以为even 或 2n表示偶数位  odd  或者 2n+1 表示奇数位 */
+		/* 1.3.1 有空格  :nth-child(n)   每一个层级的选中的元素的子元素位置 */
+		div :nth-child(1) {
+			color: rebeccapurple;
+		}
+		/* 1.3.2 没有空格 :nth-child(n)  从当前层级开始 */
+		div:nth-child(1) {
+			color: rebeccapurple;
+		}
+		/* 1.3.3  有空格:nth-child(2n) 每一个层级的选中的元素的偶数位 */
+		div :nth-child(2n) {
+			color: rebeccapurple;
+		}
+		/* 1.3.4 没有空格  :nth(2n)  当前层级的偶数位 */
+		div:nth-child(2n) {
+			color: rebeccapurple;
+		}
+		/* 1.3.5  有空格 :nth(2n+1) 每一个层级的选中的元素的j奇数位 */
+		div :nth-child(2n+1) {
+			color: rebeccapurple;
+		}
+		/* 1.3.6  没有空格 :nth(2n+1) 当前层级的奇数位 */
+		div:nth-child(2n+1) {
+			color: rebeccapurple;
+		}
+		/* 1.4 同类型的元素中进行选择 */
+		/* 1.4  :first-of-type   是所有层级的第一个元素 */
+		div:first-of-type {
+			color: blue;
+		}
+		/* 1.5  :last-of-type 所有层级的最后一个 */
+		div:last-of-type {
+			color: blue;
+		}
+		/* 1.6:nth-of-type(n) 所有层级的第n 个 */
+		div:nth-of-type(3) {
+			color: blue;
+		}
+		/* 2.否定伪类选择器（1种） */
+		/* :not()  括号里的选择器不被选择且括号里不支持复合选择器的传入 */
+		p:not(p:first-of-type):not(p:last-of-type) {
+			color: purple;
+		}
+		/* 3.a链接的伪类选择器（4种） */
+		/* link 和visited是超链接特有的 */
+		/* :visited  访问过的a标签 */
+		a:visited {
+			color: green;
+		}
+		/* :link  未访问过的a标签 */
+		a:link {
+			color: blue;
+		}
+		/* :hover  鼠标移入的元素状态 */
+		p:hover {
+			background-color: blue;
+		}
+		/* :active  鼠标点击后元素的状态 */
+		p:active {
+			background-color: blue;
+		}
+		/* 六、伪元素选择器（5种）一般用在段落标记中 */
+		/* 
+		1. p::first-letter     首字符 块级元素
+		2. p::first-line       首行  块级元素
+		3. p::selection        选中的
+		4. ::before            第一个字符之前  配合contend一起使用
+		5. ::after             最后一个字符之后 配合contend一起使用 
+		*/
+		p::first-letter {
+			font-size: 30px;
+		}
+		p::first-line {
+			background-color: pink;
+		}
+		p::selection {
+			color: #1f5e39;
+		}
+		p::before {
+			content: "->";
+			color:#b42362;
+		}
+		p::after {
+			content: "%";
+			background-color: greenyellow;
+		}
+
+	</style>
+</head>
+
+<body>
+	<p>list1</p>
+	<div>div1</div>
+	<div class="c1">c1</div>
+	<div class="c2">c2</div>
+	<div id="id1">id1</div>
+	<h1>并集选择器</h1>
+	<span id="s1">用户名已存在</span>
+	<span class="c3">密码不正确</span>
+	<c4 class="p">段落3</c4>
+	<div id="d3">div3</div>
+
+	<div>
+		我是div
+		<p>
+			我是div中的p
+			<span>我是p中的span</span>
+		</p>
+		<span>我是div中的span1</span>
+		<span>我是div中的span2</span>
+	</div>
+	<span>我是div之外的span1</span>
+	<span>我是div之外的span2</span>
+
+
+
+	<pre>&lt;div&gt;div1&lt;/div&gt;</pre>
+
+	<!--  [属性] ：含有指定属性  -->
+	<h1 title="a">《出赛》</h1>
+	<h2 title="ab">唐 王昌龄</h2>
+	<p title="abc">秦时明月汉时关</p>
+	<p title="abab">万里长征人未还</p>
+	<p title="c1">但使龙城飞将在</p>
+	<p>不教胡马度阴山</p>
+	<!-- /* 五、伪类选择器（11种） */ -->
+	<div>
+		哈哈哈哈
+		<p>段落1
+		<h1>嘿嘿</h1>
+		</p>
+		<p>段落2</p>
+		<p>段落3</p>
+		<p>段落4</p>
+		</p>
+			<div>
+				<p>算了的</p>
+			</div>
+			<div>div2
+				<p>段落5</p>
+				<p>段落6</p>
+			</div>
+
+			<div>div3
+				<p>sdf</p>
+			</div>
+</body>
+
+</html>
