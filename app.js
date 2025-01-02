@@ -19,7 +19,7 @@ const targetDir = 'public';  // 目标文件夹路径
 // 调用 copyFiles 函数
 copyFiles(sourceDir, targetDir);
 // 静态文件目录
-// app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'views')));
 
 // 读取 Markdown 文件并转换为 HTML
@@ -114,12 +114,12 @@ console.log('-------------')
 console.log('-------------')
 
 
-const css = require('./views/script.js');
+const cssfunc = require('./views/script.js');
 // 渲染模板
 const templateData = {
 	title: 'My First Post',  // 页面标题
 	content: mdHtml,     // 渲染的 HTML 内容
-	css
+	cssfunc
   };
 var finalHtml;
 

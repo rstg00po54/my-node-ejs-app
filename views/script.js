@@ -8,10 +8,11 @@ function sum(a, b) {
 
 
 // css-utils.js
-function css(file) {
+function cssfunc(file) {
+	console.log("cssx "+file)
     return `<link rel="stylesheet" href="${file}.css">`;
 }
-module.exports = css
+module.exports = cssfunc
 
 
 // <!-- <% function css(file) { return `<link rel="stylesheet" href="${file}.css">xxx`; } %> -->
