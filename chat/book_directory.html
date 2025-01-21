@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>书籍目录</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+        .book-title {
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        .chapter-list {
+            margin-left: 20px;
+            display: none;
+        }
+        .chapter {
+            cursor: pointer;
+            margin: 5px 0;
+        }
+        .subchapter-list {
+            margin-left: 20px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>书籍目录</h1>
+    <div class="book">
+        <div class="book-title" onclick="toggleVisibility('book1')">📖 第一本书</div>
+        <div class="chapter-list" id="book1">
+            <div class="chapter" onclick="toggleVisibility('chapter1-1')">第1章：引言</div>
+            <div class="subchapter-list" id="chapter1-1">
+                <div>1.1 什么是编程</div>
+                <div>1.2 编程的历史</div>
+            </div>
+            <div class="chapter" onclick="toggleVisibility('chapter1-2')">第2章：基础知识</div>
+            <div class="subchapter-list" id="chapter1-2">
+                <div>2.1 数据类型</div>
+                <div>2.2 控制流</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="book">
+        <div class="book-title" onclick="toggleVisibility('book2')">📖 第二本书</div>
+        <div class="chapter-list" id="book2">
+            <div class="chapter" onclick="toggleVisibility('chapter2-1')">第1章：高级话题</div>
+            <div class="subchapter-list" id="chapter2-1">
+                <div>1.1 面向对象编程</div>
+                <div>1.2 异步编程</div>
+            </div>
+            <div class="chapter" onclick="toggleVisibility('chapter2-2')">第2章：案例分析</div>
+            <div class="subchapter-list" id="chapter2-2">
+                <div>2.1 项目管理</div>
+                <div>2.2 软件设计模式</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleVisibility(id) {
+            const element = document.getElementById(id);
+            if (element.style.display === "none" || element.style.display === "") {
+                element.style.display = "block";
+            } else {
+                element.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>

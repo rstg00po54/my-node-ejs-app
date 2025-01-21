@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		}
+	],
+	"settings": {
+		"terminal.integrated.defaultProfile.windows": "WSL",
+		"window.title": "${rootNameShort} - ${activeEditorShort}" ,
+		"terminal.integrated.profiles.windows": {
+			"WSL": {
+				"path": "wsl.exe"
+			}
+		}
+	}
+}
