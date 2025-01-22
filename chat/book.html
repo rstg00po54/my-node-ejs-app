@@ -14,12 +14,23 @@
 			width: 300px;
 		}
 
+		a {
+			text-decoration: none;
+		}
+
+		ul,
+		li {
+
+			list-style: none;
+		}
+
 		h1 {
 			text-align: center;
 			color: #444;
 		}
 
-		.book {
+		.book,
+		.book02 {
 			margin: 15px 0;
 			border: 1px solid #ddd;
 			border-radius: 8px;
@@ -29,7 +40,7 @@
 		}
 
 		.book-title {
-			padding: 15px 20px;
+			padding: 5px 5px;
 			background-color: #007bff;
 			color: white;
 			font-size: 16px;
@@ -94,14 +105,14 @@
 		</div>
 		<div class="chapter-list" id="book1">
 			<div class="chapter" onclick="toggleSection('chapter1-1', this)">
-				第1章：引言 <span class="icon">▶</span>
+				<span class="icon">▶</span>第1章：引言
 			</div>
 			<div class="subchapter-list" id="chapter1-1">
 				<div>1.1 什么是编程</div>
 				<div>1.2 编程的历史</div>
 			</div>
 			<div class="chapter" onclick="toggleSection('chapter1-2', this)">
-				第2章：基础知识 <span class="icon">▶</span>
+				<span class="icon">▶</span>第2章：基础知识
 			</div>
 			<div class="subchapter-list" id="chapter1-2">
 				<div>2.1 数据类型</div>
@@ -110,20 +121,20 @@
 		</div>
 	</div>
 
-	<div class="book">
-		<div class="book-title" onclick="toggleSection('book2', this)">
+	<div class="book02">
+		<div class="book-title">
 			<span class="icon">▶</span>
 			第二本书
 		</div>
 		<div class="chapter-list" id="book2">
-			<div class="chapter" onclick="toggleSection('chapter2-1', this)">
+			<div class="chapter">
 				第1章：高级话题 <span class="icon">▶</span>
+				<div class="subchapter-list" id="chapter2-1">
+					<div>1.1 面向对象编程</div>
+					<div>1.2 异步编程</div>
+				</div>
 			</div>
-			<div class="subchapter-list" id="chapter2-1">
-				<div>1.1 面向对象编程</div>
-				<div>1.2 异步编程</div>
-			</div>
-			<div class="chapter" onclick="toggleSection('chapter2-2', this)">
+			<div class="chapter">
 				第2章：案例分析 <span class="icon">▶</span>
 			</div>
 			<div class="subchapter-list" id="chapter2-2">
@@ -132,11 +143,35 @@
 			</div>
 		</div>
 	</div>
-
+	<div class="book3">
+		<li><a href="#" class="sidebar-link">第 3 章 语言运行期的强化 17</a></li>
+		<ul class="menu-sub runtime">
+			<li><a href="#31-lambda-表达式" class="section-link title31">3.1 Lambda 表达式</a></li>
+			<ul class="item31">
+				<li><a href="#基础" class="section-link">基础</a></li>
+				<li><a href="#泛型-lambda" class="section-link">泛型 Lambda</a></li>
+			</ul>
+			<li><a href="#32-函数对象包装器" class="section-link title31">3.2 函数对象包装器</a></li>
+			<ul>
+				<li><a href="#stdfunction" class="section-link">`std::function`</a></li>
+				<li><a href="#stdbind-和-stdplaceholder" class="section-link">`std::bind` 和 `std::placeholder`</a></li>
+			</ul>
+			<li><a href="#33-右值引用" class="section-link title31">3.3 右值引用</a></li>
+			<ul>
+				<li><a href="#左值右值的纯右值将亡值右值" class="section-link">左值、右值的纯右值、将亡值、右值</a></li>
+				<li><a href="#右值引用和左值引用" class="section-link">右值引用和左值引用</a></li>
+				<li><a href="#移动语义" class="section-link">移动语义</a></li>
+				<li><a href="#完美转发" class="section-link">完美转发</a></li>
+			</ul>
+			<li><a href="#总结" class="section-link">总结</a></li>
+			<li><a href="#进一步阅读的参考文献" class="section-link">进一步阅读的参考文献</a></li>
+		</ul>
+	</div>
 	<script>
 		function toggleSection(id, element) {
 			const section = document.getElementById(id);
 			const icon = element.querySelector('.icon');
+			console.log("click")
 			if (section.style.display === "block") {
 				section.style.display = "none";
 				icon.classList.remove('rotate');
@@ -145,19 +180,42 @@
 				icon.classList.add('rotate');
 			}
 		}
+		function clickev(event) {
+			console.log("runtime");
+			let sibling = event.target.parentElement.nextElementSibling;
+			sibling.style.display = sibling.style.display === "none" ? "block" : "none"; // 切换显示/隐藏
+		}
 		document.addEventListener("DOMContentLoaded", function () {
-			const chapters = document.querySelectorAll(".chapter");
+			const runtime = document.getElementsByClassName("sidebar-link")[0];
+			console.log(runtime);
+			runtime.addEventListener("click", clickev);
 
-			chapters.forEach(chapter => {
-				chapter.addEventListener("click", function () {
-					const icon = chapter.querySelector(".icon");
-					const subsection = chapter.querySelector(".subsection");
+			const title31 = document.getElementsByClassName("title31");
+			Array.from(title31).forEach((child) => {
+				child.addEventListener("click", function (event) {
+					// const item31 = document.getElementsByClassName("item31")[0];
+					const item31 = event.target.parentElement.nextElementSibling;
+					item31.style.display = item31.style.display === "none" ? "block" : "none";
+				});
+			})
 
-					// 切换箭头方向和子章节显示状态
-					icon.classList.toggle("rotate");
-					subsection.style.display = subsection.style.display === "none" ? "block" : "none";
+			const book02 = document.getElementsByClassName("book02")[0];
+			console.log(book02.length)
+			Array.from(book02.children).forEach((child) => {
+				console.log(child); // 输出每个子元素
+				child.addEventListener("click", function (event) {
+					console.log(event.target.parentElement.children);
+					Array.from(event.target.parentElement.children).forEach((child) => {
+						if (child == event.target) {
+							console.log("find");
+						} else {
+							child.style.display = child.style.display === "none" ? "block" : "none"; // 切换显示/隐藏
+						}
+					})
 				});
 			});
+
+
 		});
 
 	</script>

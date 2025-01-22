@@ -5,8 +5,12 @@
 		}
 	],
 	"settings": {
+		// 开启保存时自动格式化
+		"editor.formatOnSave": true,
+		// 对所有语言启用自动格式化
+		"editor.formatOnSaveMode": "file",
 		"terminal.integrated.defaultProfile.windows": "WSL",
-		"window.title": "${rootNameShort} - ${activeEditorShort}" ,
+		"window.title": "${rootNameShort} - ${activeEditorShort}",
 		"terminal.integrated.profiles.windows": {
 			"WSL": {
 				"path": "wsl.exe"
