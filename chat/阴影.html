@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Box Shadow 示例</title>
+	<style>
+		* {
+			border: 5px solid rgb(199, 103, 59);
+			margin: 3px;
+			padding: 0;
+			list-style: none;
+			background-color: #202324;
+		}
+
+		body {
+			display: flex;
+
+			flex-direction: column;
+		}
+
+		.out {
+			display: flex;
+			/* width: auto; */
+		}
+
+
+		.shadow-box {
+			width: 100px;
+			height: 100px;
+			background-color: #f2f2f2;
+			box-shadow: 5px 5px 0 5px rgb(103, 128, 145);
+			margin: 50px auto;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-size: 18px;
+		}
+
+
+		.active {
+			background: rgb(34, 37, 39);
+		}
+
+		.div2img::before {
+			content: "";
+			position: absolute;
+			top: -30px;
+			right: 0;
+			width: 30px;
+			height: 30px;
+			border-bottom-right-radius: 25px;
+			box-shadow: 5px 5px 0 5px rgb(135 225 255);
+			background: transparent;
+		}
+
+		/*
+		.active::after {
+			content: "";
+			position: absolute;
+			bottom: -30px;
+			right: 0;
+			width: 30px;
+			height: 30px;
+			border-top-right-radius: 25px;
+			box-shadow: 5px -5px 0 5px rgb(135 225 255);
+			background: transparent;
+		} */
+
+		.div1 {
+			margin: 10px;
+			background-color: rgb(76, 83, 82);
+			position: relative;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			color: #333;
+			transition: 0.5s;
+		}
+
+
+
+		/*
+box-sizing: content-box;（默认）：width 和 height 只包括内容，padding 和 border 会额外增加到元素的总尺寸。
+box-sizing: border-box;：width 和 height 包含 padding 和 border，不会增加元素的总尺寸。
+*/
+		.div2 {
+			margin: 30px;
+			display: flex;
+			border-color: #f70000;
+		}
+
+		.div2li {
+			border-color: #0044ff;
+		}
+
+		a {
+			border: none;
+		}
+
+
+		.icon {
+			border-bottom-left-radius: 105px;
+			border-top-left-radius: 105px;
+			position: relative;
+			/* display: flex; */
+			/* justify-content: center; */
+			/* align-items: center; */
+			padding: 10px;
+			color: #00fa15;
+			transition: 0.5s;
+			border-color: rgb(162, 0, 255);
+			background-color: #a1a1a1;
+		}
+
+		/* .active 元素包含一个链接 <a>，链接内部有一个 .icon 元素。 */
+		.active a .icon::before {
+			content: "";
+			position: absolute;
+			inset: 5px;
+			/* 圆形 */
+			border-radius: 50%;
+			transition: 0.5s;
+			border-width: 10px;
+			border-style: solid;
+			border-color: #ff00dd99;
+			/* width 和 height 包括了元素的内容、padding 和 border，因此不会额外增加元素的尺寸。 */
+			box-sizing: border-box;
+		}
+
+		.imageBox {
+
+			/* border-radius: 50%; */
+			overflow: hidden;
+			justify-content: center;
+			align-items: center;
+			border-color: #0044ff;
+			background-color: #3d3d3d;
+		}
+
+		/* .imageBox img {
+			width: 200px;
+			height: 200px;
+			object-fit: cover;
+		} */
+
+		.img2 {
+			border-width: 3px;
+			border-radius: 50%;
+			width: 200px;
+			height: 200px;
+			object-fit: cover;
+		}
+
+		/*---------------------------------------*/
+		.div3 {
+			margin: 5px;
+			border-color: rgb(2, 136, 253);
+			/* width: 200px;
+			height: 200px; */
+		}
+
+		.div3i {
+			border-color: #c99393;
+		}
+
+		.div3img {
+			border-color: #a9ee3a;
+			width: 200px;
+			height: 200px;
+			display: block;
+
+		}
+	</style>
+</head>
+
+<body>
+
+	<div class="shadow-box">
+		阴影效果
+	</div>
+	<div class="out">
+		<div class="div1">
+			<div class="imageBox active">
+				<img src="./cat2.jpg" alt="" class="div3img">
+			</div>
+		</div>
+		<hr>
+		<div class="div2">
+			<li class="active div2li" id="logo">
+				<a href="#">
+					<div class="icon">
+						<div class="imageBox active div2img">
+							<img src="./cat2.jpg" alt="" class="div3img img2">
+						</div>
+					</div>
+				</a>
+			</li>
+		</div>
+		<hr>
+		<div>
+
+			<div class="div3">
+				<div class="div3i">
+					<img src="./cat2.jpg" alt="" class="div3img">
+				</div>
+			</div>
+		</div>
+		<hr>
+		<div>
+			<div>
+
+				<li>1</li>1232
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>

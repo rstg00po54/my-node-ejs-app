@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+	<style>
+		* {
+			border: 5px solid rgb(199, 103, 59);
+			margin: 0px;
+			padding: 0;
+			list-style: none;
+			background-color: #202324;
+		}
+
+		body {
+			border-color: #1e6c92;
+			/* height: 500px; */
+			/* padding: 100px; */
+		}
+
+		.div3 {
+			/* position: relative; */
+			/* margin: 20px; */
+			align-content: center;
+			padding: 20px 0 20px 20px;
+			top: 10px;
+			border-color: #178826;
+
+			width: 360px;
+			height: 600px;
+
+			overflow: hidden;
+			transition: 0.5s;
+
+			&:hover {
+				width: 800px;
+
+			}
+		}
+
+
+		.div3i {
+			/* width: 600px; */
+			position: relative;
+
+			background-color: rgba(49, 48, 46, 0.966);
+			border-color: rgba(49, 48, 46, 0.966);
+			border-width: 80px;
+			border-right-width: 0;
+
+			border-bottom-left-radius: 320px;
+			border-top-left-radius: 320px;
+			/* overflow: hidden; */
+
+			&::before {
+				content: "";
+				position: absolute;
+				top: -220px;
+				right: -20px;
+				width: 140px;
+				height: 140px;
+				/*
+				5px: 水平偏移（水平阴影的距离）。
+				5px: 垂直偏移（垂直阴影的距离）。
+				0: 模糊半径（阴影的模糊程度，0 表示没有模糊）。
+				5px: 扩展半径（阴影的扩展范围）。
+				rgb(135 225 255): 阴影的颜色（采用 RGB 颜色模式）。
+				*/
+				box-shadow: 40px 40px 0 40px rgba(49, 48, 46, 0.966);
+				background: transparent;
+				/* border-top-right-radius: 100px; */
+				border-bottom-right-radius: 200px;
+			}
+
+			&::after {
+				content: "";
+				position: absolute;
+				top: 360px;
+				/* left: 140px; */
+				right: -20px;
+				width: 140px;
+				height: 140px;
+				/*
+				5px: 水平偏移（水平阴影的距离）。
+				5px: 垂直偏移（垂直阴影的距离）。
+				0: 模糊半径（阴影的模糊程度，0 表示没有模糊）。
+				5px: 扩展半径（阴影的扩展范围）。
+				rgb(135 225 255): 阴影的颜色（采用 RGB 颜色模式）。
+				*/
+				box-shadow: 40px -40px 0 40px rgba(49, 48, 46, 0.966);
+				background: transparent;
+				border-top-right-radius: 118px;
+			}
+		}
+
+		.div3img {
+			border-color: #3441f342;
+			width: 200px;
+			height: 200px;
+			display: block;
+			/* margin-top: 3px; */
+			/* margin-bottom: 3px; */
+			border-width: 40px;
+			border-radius: 50%;
+
+		}
+	</style>
+</head>
+
+<body class="div4">
+	<div class="div3">
+		<div class="div3i">
+			<img src="./cat2.png" alt="" class="div3img">
+		</div>
+	</div>
+</body>
+
+</html>
