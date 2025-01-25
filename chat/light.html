@@ -72,12 +72,56 @@
 			border-radius: 20px;
 			transition: transform 0.3s ease;
 		}
+
+		.text-container {
+			position: relative;
+			display: inline-block;
+			font-size: 2rem;
+			font-weight: bold;
+			overflow: hidden;
+		}
+
+		.text-container span {
+			position: relative;
+			z-index: 2;
+			display: inline-block;
+			background: linear-gradient(45deg, #ffbc00, #ff0058);
+			-webkit-background-clip: text;
+			color: transparent;
+			transition: transform 0.3s ease, text-shadow 0.3s ease;
+		}
+
+		.text-container::before {
+			content: '';
+			position: absolute;
+			/* inset: 0; */
+			border-radius: 20px;
+			background: linear-gradient(45deg, #ffbc00, #ff0058);
+			filter: blur(30px);
+			z-index: 1;
+			transition: transform 0.3s ease, opacity 0.3s ease;
+			opacity: 0.6;
+		}
+
+		.text-container:hover span {
+			transform: scale(1.1);
+			text-shadow: 0 5px 15px rgba(255, 0, 88, 0.7);
+		}
+
+		.text-container:hover::before {
+			transform: scale(1.2);
+			opacity: 0.8;
+		}
 	</style>
 </head>
 
 <body>
 	<div class="container">
-		<div class="box"><b></b></div>
+		<div class="box"><b>
+				<div class="text-container">
+					<span>Hover Me!</span>
+				</div>
+			</b></div>
 		<div class="box"><b></b></div>
 		<div class="box"><b></b></div>
 	</div>
